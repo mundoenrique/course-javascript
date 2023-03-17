@@ -1,3 +1,4 @@
+alert('Hola desde app.js');
 // console.log('Hola mundo desde archivo JS');
 let a = 10;
 var b = 10; // no se debe usar esta forma
