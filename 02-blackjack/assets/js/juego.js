@@ -39,6 +39,7 @@ const crearDeck = () => {
 };
 
 crearDeck();
+console.log(deck);
 
 // Esta función me permite tomar una carta
 const pedirCarta = () => {
@@ -92,7 +93,7 @@ const turnoComputadora = (puntosMinimos) => {
     } else {
       alert('Computadopra gana :`(');
     }
-  }, 50);
+  }, 1000);
 };
 
 // Eventos
@@ -127,6 +128,8 @@ btnDetener.addEventListener('click', () => {
 });
 
 btnNuevo.addEventListener('click', () => {
+  console.clear();
+  deck = [];
   deck = crearDeck();
   puntosJugador = 0;
   puntosComputadora = 0;
@@ -134,6 +137,6 @@ btnNuevo.addEventListener('click', () => {
   puntosHTML[1].innerText = 0;
   divCartasJugador.innerHTML = '';
   divCartasComputadora.innerHTML = '';
-  btnPedir.disabled = true;
-  btnDetener.disabled = true;
+  btnPedir.disabled = false;
+  btnDetener.disabled = false;
 });
