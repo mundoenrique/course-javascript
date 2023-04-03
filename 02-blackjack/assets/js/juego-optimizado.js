@@ -141,3 +141,5 @@ const miModulo = (() => {
     nuevoJuego: inicializarJuego,
   };
 })();
+
+// minificado https://www.toptal.com/developers/javascript-minifier
