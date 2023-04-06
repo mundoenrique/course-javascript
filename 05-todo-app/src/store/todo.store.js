@@ -1,4 +1,4 @@
-import { Todo } from '../todos/todo.model';
+import { Todo } from '../todos/models/todo.model';
 
 export const Filters = {
   All: 'all',

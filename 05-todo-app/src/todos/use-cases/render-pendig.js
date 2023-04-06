@@ -1,4 +1,4 @@
-import todoStore, { Filters } from '../store/todo.store';
+import todoStore, { Filters } from '../../store/todo.store';
 
 let element;
 export const renderPending = (elementId) => {

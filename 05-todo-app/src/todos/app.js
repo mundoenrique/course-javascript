@@ -1,6 +1,6 @@
 import html from './app.html?raw';
 import todoStore, { Filters } from '../store/todo.store';
-import { renderTodos, renderPending } from '../use-cases';
+import { renderTodos, renderPending } from './use-cases';
 
 const elementIds = {
   clearCompleted: '.clear-completed',

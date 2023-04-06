@@ -1,4 +1,4 @@
-import { Todo } from '../todos/todo.model';
+import { Todo } from '../models/todo.model';
 import { createTodoHtml } from './create-todo-html';
 
 let element;
