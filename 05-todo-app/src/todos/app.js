@@ -25,6 +25,8 @@ export const App = (elementId) => {
 
   // Referencias HTML
   const newTodoDescrption = document.querySelector(elementIds.newTodoInput);
+  const todoListUl = document.querySelector(elementIds.todoList);
+  const deleteTodo = document.querySelector(elementIds.deleteTodo);
 
   // Listeners
   newTodoDescrption.addEventListener('keyup', (event) => {
@@ -34,5 +36,20 @@ export const App = (elementId) => {
     todoStore.addTodo(event.target.value);
     displayTodos();
     event.target.value = '';
+  });
+
+  todoListUl.addEventListener('click', (event) => {
+    const element = event.target.closest('[data-id]');
+    todoStore.toggleTodo(element.getAttribute('data-id'));
+    displayTodos();
+  });
+
+  todoListUl.addEventListener('click', (event) => {
+    const element = event.target.closest('[data-id]');
+    const isDestroyElement = event.target.className === 'destroy';
+    if (!element || !isDestroyElement) return;
+
+    todoStore.deleteTodo(element.getAttribute('data-id'));
+    displayTodos();
   });
 };
