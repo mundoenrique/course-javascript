@@ -3,6 +3,7 @@ import todoStore from '../store/todo.store';
 import { renderTodos } from '../use-cases';
 
 const elementIds = {
+  clearCompleted: '.clear-completed',
   todoList: '.todo-list',
   newTodoInput: '#new-todo-input',
 };
@@ -15,6 +16,7 @@ export const App = (elementId) => {
     const todos = todoStore.getTodos(todoStore.getCurrentFilter());
     renderTodos(elementIds.todoList, todos);
   };
+
   //Cuanod la función APP() SE llama
   (() => {
     const app = document.createElement('div');
@@ -26,7 +28,7 @@ export const App = (elementId) => {
   // Referencias HTML
   const newTodoDescrption = document.querySelector(elementIds.newTodoInput);
   const todoListUl = document.querySelector(elementIds.todoList);
-  const deleteTodo = document.querySelector(elementIds.deleteTodo);
+  const clearCompletedButton = document.querySelector(elementIds.clearCompleted);
 
   // Listeners
   newTodoDescrption.addEventListener('keyup', (event) => {
@@ -50,6 +52,11 @@ export const App = (elementId) => {
     if (!element || !isDestroyElement) return;
 
     todoStore.deleteTodo(element.getAttribute('data-id'));
+    displayTodos();
+  });
+
+  clearCompletedButton.addEventListener('click', () => {
+    todoStore.deleteCompleted();
     displayTodos();
   });
 };
