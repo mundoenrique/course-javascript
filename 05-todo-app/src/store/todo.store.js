@@ -16,50 +16,91 @@ const initStore = () => {
   console.log('initStore :-)');
 };
 
+/**
+ * Carga el store
+ */
 const loadStore = () => {};
 
 /**
- * Crea un todo
- * @param {String} description
+ * Devuelve todos los Todos
+ * @param {String} filter Tipo de filtro
+ * @returns {String} Filtro a usar
  */
-const addTodo = (description) => {};
+const getTodos = (filter = Filters.All) => {
+  switch (filter) {
+    case Filters.All:
+      return [...state.todos];
+    case Filters.Completed:
+      return state.filter((todo) => todo.done);
+    case Filters.Pendig:
+      return state.filter((todo) => !todo.done);
+    default:
+      throw new Error(`Option ${filter} is not valid`);
+  }
+};
+
+/**
+ * Crea un todo
+ * @param {String} description descripción de la tarea
+ */
+const addTodo = (description) => {
+  if (!description) throw new Error('Description is required');
+
+  state.todos.push(new Todo(description));
+};
 
 /**
  * toggle dle todo
  * @param {string} todoId id del todo
  */
-const toggleTodo = (todoId) => {};
+const toggleTodo = (todoId) => {
+  state.todos = state.todos.map((todo) => {
+    if (todo.id === todoId) {
+      todo.done = !todo.done;
+    }
+
+    return todo;
+  });
+};
 
 /**
  * Elimina un todo
  * @param {String} todoId id del todo
  */
-const deleteTodo = (todoId) => {};
+const deleteTodo = (todoId) => {
+  state.todos = state.todos.filter((todo) => todo.id !== todoId);
+};
 
 /**
  * elimina todos competados
- * @param {String} todoId id del todo
  */
-const deleteCompleted = (todoId) => {};
+const deleteCompleted = () => {
+  state.todos = state.todos.filter((todo) => todo.done);
+};
 
 /**
  * cambia el tipo de filtro de busqueda
- * @param {String} newFilter tipo de filtro
+ * @param {Filters} newFilter tipo de filtro
  */
-const setFilter = (newFilter = Filters.All) => {};
+const setFilter = (newFilter = Filters.All) => {
+  state.filter = newFilter;
+};
 
 /**
  * Obtienen el filtro actual
  */
-const getCurrentFilter = () => {};
+const getCurrentFilter = () => {
+  return state.filter;
+};
 
 export default {
   addTodo,
   deleteCompleted,
   deleteTodo,
+  getCurrentFilter,
+  getTodos,
   initStore,
   loadStore,
   setFilter,
   toggleTodo,
-  getCurrentFilter,
 };
