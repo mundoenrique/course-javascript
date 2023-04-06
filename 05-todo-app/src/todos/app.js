@@ -2,29 +2,30 @@ import html from './app.html?raw';
 import todoStore, { Filters } from '../store/todo.store';
 import { renderTodos, renderPending } from './use-cases';
 
-const elementIds = {
-  clearCompleted: '.clear-completed',
-  todoList: '.todo-list',
-  newTodoInput: '#new-todo-input',
-  todoFilters: '.filtro',
-  pendingCountLabel: '#pending-count',
+const ElementIDs = {
+  ClearCompletedButton: '.clear-completed',
+  TodoList: '.todo-list',
+  NewTodoInput: '#new-todo-input',
+  TodoFilters: '.filtro',
+  PendingCountLabel: '#pending-count',
 };
+
 /**
  *
- * @param {string} elementId
+ * @param {String} elementId
  */
 export const App = (elementId) => {
   const displayTodos = () => {
     const todos = todoStore.getTodos(todoStore.getCurrentFilter());
-    renderTodos(elementIds.todoList, todos);
+    renderTodos(ElementIDs.TodoList, todos);
     updatePendingCount();
   };
 
   const updatePendingCount = () => {
-    renderPending(elementIds.pendingCountLabel);
+    renderPending(ElementIDs.PendingCountLabel);
   };
 
-  //Cuanod la función APP() SE llama
+  // Cuando la función App() se llama
   (() => {
     const app = document.createElement('div');
     app.innerHTML = html;
@@ -33,13 +34,13 @@ export const App = (elementId) => {
   })();
 
   // Referencias HTML
-  const newTodoDescrption = document.querySelector(elementIds.newTodoInput);
-  const todoListUl = document.querySelector(elementIds.todoList);
-  const clearCompletedButton = document.querySelector(elementIds.clearCompleted);
-  const filtersLIs = document.querySelectorAll(elementIds.todoFilters);
+  const newDescriptionInput = document.querySelector(ElementIDs.NewTodoInput);
+  const todoListUL = document.querySelector(ElementIDs.TodoList);
+  const clearCompletedButton = document.querySelector(ElementIDs.ClearCompletedButton);
+  const filtersLIs = document.querySelectorAll(ElementIDs.TodoFilters);
 
   // Listeners
-  newTodoDescrption.addEventListener('keyup', (event) => {
+  newDescriptionInput.addEventListener('keyup', (event) => {
     if (event.keyCode !== 13) return;
     if (event.target.value.trim().length === 0) return;
 
@@ -48,15 +49,15 @@ export const App = (elementId) => {
     event.target.value = '';
   });
 
-  todoListUl.addEventListener('click', (event) => {
+  todoListUL.addEventListener('click', (event) => {
     const element = event.target.closest('[data-id]');
     todoStore.toggleTodo(element.getAttribute('data-id'));
     displayTodos();
   });
 
-  todoListUl.addEventListener('click', (event) => {
-    const element = event.target.closest('[data-id]');
+  todoListUL.addEventListener('click', (event) => {
     const isDestroyElement = event.target.className === 'destroy';
+    const element = event.target.closest('[data-id]');
     if (!element || !isDestroyElement) return;
 
     todoStore.deleteTodo(element.getAttribute('data-id'));
@@ -72,18 +73,19 @@ export const App = (elementId) => {
     element.addEventListener('click', (element) => {
       filtersLIs.forEach((el) => el.classList.remove('selected'));
       element.target.classList.add('selected');
-      console.log(element.target.text);
+
       switch (element.target.text) {
         case 'Todos':
           todoStore.setFilter(Filters.All);
           break;
         case 'Pendientes':
-          todoStore.setFilter(Filters.Pendig);
+          todoStore.setFilter(Filters.Pending);
           break;
         case 'Completados':
           todoStore.setFilter(Filters.Completed);
           break;
       }
+
       displayTodos();
     });
   });

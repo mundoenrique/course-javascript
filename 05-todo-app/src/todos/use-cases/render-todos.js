@@ -1,10 +1,10 @@
 import { Todo } from '../models/todo.model';
-import { createTodoHtml } from './create-todo-html';
+import { createTodoHTML } from './';
 
 let element;
 
 /**
- * REnderiza los todos
+ * Renderiza los todos
  * @param {String} elementId ID del hatml
  * @param {Todo} todos lista de todos
  */
@@ -16,6 +16,6 @@ export const renderTodos = (elementId, todos = []) => {
   element.innerHTML = '';
 
   todos.forEach((todo) => {
-    element.append(createTodoHtml(todo));
+    element.append(createTodoHTML(todo));
   });
 };

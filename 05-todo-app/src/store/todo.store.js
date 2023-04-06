@@ -1,9 +1,9 @@
 import { Todo } from '../todos/models/todo.model';
 
 export const Filters = {
-  All: 'all',
-  Completed: 'completed',
-  Pendig: 'pendig',
+  All: 'All',
+  Completed: 'Completed',
+  Pending: 'Pending',
 };
 
 const state = {
@@ -22,11 +22,9 @@ const initStore = () => {
   loadStore();
 };
 
-/**
- * Carga el store
- */
 const loadStore = () => {
   if (!localStorage.getItem('state')) return;
+
   const { todos = [], filter = Filters.All } = JSON.parse(localStorage.getItem('state'));
   state.todos = todos;
   state.filter = filter;
@@ -45,12 +43,15 @@ const getTodos = (filter = Filters.All) => {
   switch (filter) {
     case Filters.All:
       return [...state.todos];
+
     case Filters.Completed:
       return state.todos.filter((todo) => todo.done);
-    case Filters.Pendig:
+
+    case Filters.Pending:
       return state.todos.filter((todo) => !todo.done);
+
     default:
-      throw new Error(`Option ${filter} is not valid`);
+      throw new Error(`Option ${filter} is not valid.`);
   }
 };
 
@@ -60,14 +61,14 @@ const getTodos = (filter = Filters.All) => {
  */
 const addTodo = (description) => {
   if (!description) throw new Error('Description is required');
-
   state.todos.push(new Todo(description));
+
   saveStateToLocalStorage();
 };
 
 /**
  * toggle dle todo
- * @param {string} todoId id del todo
+ * @param {String} todoId id del todo
  */
 const toggleTodo = (todoId) => {
   state.todos = state.todos.map((todo) => {
@@ -75,10 +76,10 @@ const toggleTodo = (todoId) => {
       todo.done = !todo.done;
     }
 
-    saveStateToLocalStorage();
-
     return todo;
   });
+
+  saveStateToLocalStorage();
 };
 
 /**

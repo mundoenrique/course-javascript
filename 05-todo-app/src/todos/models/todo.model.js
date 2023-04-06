@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class Todo {
   /**
    * Cre el objeto Todo
-   * @param {String} descrption Descripción del elemento
+   * @param {String} description
    */
   constructor(description) {
     this.id = uuidv4();
