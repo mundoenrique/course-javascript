@@ -9,18 +9,18 @@ const fetchQuote = async () => {
 
   return data[0];
 };
+
 /**
  * Renderiza el elemento HTML
  * @param {HTMLDivElement} element
  */
 export const BreakingbadApp = async (element) => {
-  document.querySelector('#app-title').innerHTML = 'Breakingbad app';
+  document.querySelector('#app-title').innerHTML = 'Breakingbad App';
   element.innerHTML = 'Loading...';
 
   const quoteLabel = document.createElement('blockquote');
   const authorLabel = document.createElement('h3');
   const nextQuoteButton = document.createElement('button');
-
   nextQuoteButton.innerText = 'Next Quote';
 
   const renderQuote = (data) => {
