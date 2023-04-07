@@ -2,21 +2,21 @@
  *
  * @param {HTMLDivElement} element elemnto html
  */
-export const promiseRaceComponent = (element) => {
-  element.innerHTML = 'Cargando....';
+export const asyncAwait2Component = async (element) => {
+  console.time('Start');
+  // const value1 = await slowPromise(1);
+  // const value2 = await mediumPromise(2);
+  // const value3 = await fastPromise(3);
 
-  const renderValue = (value) => {
-    element.innerHTML = value;
-  };
+  const [value1, value2, value3] = await Promise.all([slowPromise(1), mediumPromise(2), fastPromise(3)]);
 
-  Promise.race([
-    slowPromise(1),
-    mediumPromise(2),
-    fastPromise(3),
-    slowPromise(4),
-    mediumPromise(5),
-    fastPromise(6),
-  ]).then(renderValue);
+  element.innerHTML = `
+  value1: ${value1} <br>
+  value2: ${value2} <br>
+  value3: ${value3} <br>
+  `;
+
+  console.timeEnd('Start');
 };
 
 const slowPromise = (puesto) =>
