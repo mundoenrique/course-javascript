@@ -5,7 +5,7 @@ import { heroes } from '../data/heroes';
  * @param {HTMLDivElement} element elemnto html
  */
 export const asyncComponent = (element) => {
-  const id1 = '5d86371f9f80b591f499df325';
+  const id1 = '5d86371f9f80b591f499df32';
 
   console.log('Inicio de componente');
 

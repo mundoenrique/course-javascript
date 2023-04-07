@@ -29,8 +29,8 @@ document.querySelector('#app').innerHTML = `
 
 const element = document.querySelector('.card');
 
-// environmentsComponent( element );
-// callbacksComponent( element );
+// environmentsComponent(element);
+// callbacksComponent(element);
 // promiseComponent(element);
 // promiseRaceComponent(element);
 // asyncComponent(element);
