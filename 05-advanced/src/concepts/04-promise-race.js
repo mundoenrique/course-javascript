@@ -3,7 +3,7 @@
  * @param {HTMLDivElement} element elemnto html
  */
 export const promiseRaceComponent = (element) => {
-  element.innerHTML = 'Cargando....';
+  element.innerHTML = 'Cargando...';
 
   const renderValue = (value) => {
     element.innerHTML = value;

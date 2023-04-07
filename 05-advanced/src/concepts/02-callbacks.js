@@ -30,14 +30,14 @@ export const callbacksComponent = (element) => {
 /**
  *
  * @param {String} id id del heroe
- * @param {(Error: String|null,  hero: Object) => void} callback Función de retorno
+ * @param {(Error: String | null, hero: Object) => void} callback Función de retorno
  */
 const findHero = (id, callback) => {
   const hero = heroes.find((hero) => hero.id === id);
 
   if (!hero) {
-    callback(`Hero with ${id} not found.`);
-    return;
+    callback(`Hero with id ${id} not found.`);
+    return; // undefined;
   }
 
   callback(null, hero);

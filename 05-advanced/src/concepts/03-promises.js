@@ -4,7 +4,7 @@ import { heroes } from '../data/heroes';
  *
  * @param {HTMLDivElement} element elemnto html
  */
-export const promisesComponent = (element) => {
+export const promiseComponent = (element) => {
   const id1 = '5d86371f1efebc31def272e2';
   const id2 = '5d86371f25a058e5b1c8a65e';
   let hero1;
@@ -21,11 +21,15 @@ export const promisesComponent = (element) => {
   };
 
   const renderError = (error) => {
-    element.innerHTML = `<h3>${error}</h3>`;
+    element.innerHTML = `
+    <h1>Error:</h1>
+    <h3>${error}</h3>
+    `;
   };
 
   findHero(id1).then(renderHero).catch(renderError);
 
+  // !Forma 1
   findHero(id1)
     .then((hero1) => {
       findHero(id2)
@@ -36,6 +40,7 @@ export const promisesComponent = (element) => {
     })
     .catch(renderError);
 
+  // !Forma 2
   findHero(id1)
     .then((hero) => {
       hero1 = hero;
@@ -47,10 +52,9 @@ export const promisesComponent = (element) => {
     })
     .catch(renderError);
 
+  // !Forma 3
   Promise.all([findHero(id1), findHero(id2)])
-    .then(([hero1, hero2]) => {
-      renderTwoHeroes(hero1, hero2);
-    })
+    .then(([hero1, hero2]) => renderTwoHeroes(hero1, hero2))
     .catch(renderError);
 };
 

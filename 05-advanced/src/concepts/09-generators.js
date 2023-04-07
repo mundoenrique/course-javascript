@@ -2,8 +2,8 @@
  *
  * @param {HTMLDivElement} element elemnto html
  */
-export const generatorFunctionComponent = (element) => {
-  const generator = myfirstGeneratorFunction();
+export const generatorFunctionsComponent = (element) => {
+  const generator = myFirstGeneratorFunction();
 
   console.log(generator.next());
   console.log(generator.next());
@@ -31,9 +31,10 @@ function* idGenerator() {
   }
 }
 
-function* myfirstGeneratorFunction() {
+function* myFirstGeneratorFunction() {
   yield 'Mi primer valor';
   yield 'Mi segundo valor';
   yield 'Mi tercer valor';
   return 'Ya no hay valores';
+  yield 'Ya no pueden hacer nada';
 }

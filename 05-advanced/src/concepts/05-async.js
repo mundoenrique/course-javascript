@@ -6,8 +6,8 @@ import { heroes } from '../data/heroes';
  */
 export const asyncComponent = (element) => {
   const id1 = '5d86371f9f80b591f499df325';
-  const id2 = '5d86371f233c9f2425f16916';
-  console.log('inicio del componente');
+
+  console.log('Inicio de componente');
 
   findHero(id1)
     .then((name) => (element.innerHTML = name))

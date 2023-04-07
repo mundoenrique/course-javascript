@@ -4,7 +4,7 @@ import { heroes } from '../data/heroes';
  *
  * @param {HTMLDivElement} element elemnto html
  */
-export const generatorAsyncComponent = async (element) => {
+export const generatorsAsyncComponent = async (element) => {
   const heroGenerator = getHeroGenerator();
   let isFinished = false;
 
