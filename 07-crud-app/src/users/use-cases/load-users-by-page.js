@@ -2,11 +2,11 @@ import { localhostUserToModel } from '../mappers/localhost-user.mapper';
 import { User } from '../models/user';
 
 /**
- * Página de usuarios
- * @param {Number} page Página
+ *
+ * @param {Number} page
  * @returns {Promise<User[]>}
  */
-export const loadUserByPage = async (page = 1) => {
+export const loadUsersByPage = async (page = 1) => {
   const url = `${import.meta.env.VITE_BASE_URL}/users?_page=${page}`;
   const res = await fetch(url);
   const data = await res.json();

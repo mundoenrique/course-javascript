@@ -1,4 +1,4 @@
-import { loadUserByPage } from '../use-cases/load-users-by-page';
+import { loadUsersByPage } from '../use-cases/load-users-by-page';
 
 const state = {
   currentPage: 0,
@@ -6,7 +6,7 @@ const state = {
 };
 
 const loadNextPage = async () => {
-  const users = await loadUserByPage(state.currentPage + 1);
+  const users = await loadUsersByPage(state.currentPage + 1);
   if (users.length === 0) return;
 
   state.currentPage += 1;
@@ -15,25 +15,26 @@ const loadNextPage = async () => {
 
 const loadPreviousPage = async () => {
   if (state.currentPage === 1) return;
-  const users = await loadUserByPage(state.currentPage - 1);
+  const users = await loadUsersByPage(state.currentPage - 1);
 
-  state.currentPage -= 1;
   state.users = users;
+  state.currentPage -= 1;
 };
 
 /**
  *
  * @param {User} updatedUser
  */
-const onUserChange = (updatedUser) => {
+const onUserChanged = (updatedUser) => {
   let wasFound = false;
 
   state.users = state.users.map((user) => {
     if (user.id === updatedUser.id) {
+      wasFound = true;
       return updatedUser;
-    } else {
-      return user;
     }
+
+    return user;
   });
 
   if (state.users.length < 10 && !wasFound) {
@@ -42,7 +43,7 @@ const onUserChange = (updatedUser) => {
 };
 
 const reloadPage = async () => {
-  const users = await loadUserByPage(state.currentPage);
+  const users = await loadUsersByPage(state.currentPage);
   if (users.length === 0) {
     await loadPreviousPage();
     return;
@@ -54,7 +55,7 @@ const reloadPage = async () => {
 export default {
   loadNextPage,
   loadPreviousPage,
-  onUserChange,
+  onUserChanged,
   reloadPage,
 
   /**

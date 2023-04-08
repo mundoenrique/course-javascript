@@ -7,7 +7,7 @@ export const deleteUserById = async (id) => {
   const res = await fetch(url, {
     method: 'DELETE',
   });
-  const deleteResolve = await res.json();
-  console.log({ deleteResolve });
-  return deleteResolve;
+  const deleteResult = await res.json();
+
+  return deleteResult;
 };

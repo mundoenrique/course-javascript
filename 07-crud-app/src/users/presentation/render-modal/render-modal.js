@@ -1,10 +1,12 @@
 import modalHtml from './render-modal.html?raw';
-import './render-modal.css';
 import { User } from '../../models/user';
 import { getUserById } from '../../use-cases/get-user-by-id';
 
+import './render-modal.css';
+
 let modal, form;
 let loadedUser = {};
+
 /**
  *
  * @param {String | Number} id
@@ -38,9 +40,8 @@ const setFormValues = (user) => {
 
 /**
  *
- @param {HTMLDivElement} element
+ * @param {HTMLDivElement} element
  * @param {(userLike) => Promise<void>} callback
- * @returns
  */
 export const renderModal = (element, callback) => {
   if (modal) return;

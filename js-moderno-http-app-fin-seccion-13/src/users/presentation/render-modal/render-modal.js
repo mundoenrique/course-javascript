@@ -76,7 +76,6 @@ export const renderModal = (element, callback) => {
       userLike[key] = value;
     }
 
-    // console.log(userLike);
     await callback(userLike);
 
     hideModal();

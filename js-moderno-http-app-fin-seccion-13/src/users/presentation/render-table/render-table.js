@@ -49,7 +49,7 @@ const tableDeleteListener = async (event) => {
     document.querySelector('#current-page').innerText = usersStore.getCurrentPage();
     renderTable();
   } catch (error) {
-    console.log(error);
+    console.error(error);
     alert('No se pudo eliminar');
   }
 };

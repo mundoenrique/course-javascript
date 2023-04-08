@@ -1,6 +1,6 @@
 import usersStore from '../../store/users-store';
-import { deleteUserById } from '../../use-cases/delete-user-by-id';
 import { showModal } from '../render-modal/render-modal';
+import { deleteUserById } from '../../use-cases/delete-user-by-id';
 import './render-table.css';
 
 let table;
@@ -14,7 +14,7 @@ const createTable = () => {
     <th>#ID</th>
     <th>Balance</th>
     <th>firstName</th>
-    <th>lastName</th>
+    <th>LastName</th>
     <th>Active</th>
     <th>Actions</th>
   </tr>
@@ -50,10 +50,10 @@ const tableDeleteListener = async (event) => {
   try {
     await deleteUserById(id);
     await usersStore.reloadPage();
-    document.querySelector('#current-page').innerTest = usersStore.getCurrentPage();
+    document.querySelector('#current-page').innerText = usersStore.getCurrentPage();
     renderTable();
   } catch (error) {
-    console.log(error);
+    console.error(error);
     alert('No se pudo eliminar');
   }
 };

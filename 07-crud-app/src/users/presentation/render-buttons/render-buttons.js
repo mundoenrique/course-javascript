@@ -10,14 +10,14 @@ export const renderButtons = (element) => {
   const nextButton = document.createElement('button');
   nextButton.innerText = ' Next >';
 
-  const PrevButton = document.createElement('button');
-  PrevButton.innerText = '< Prev ';
+  const prevButton = document.createElement('button');
+  prevButton.innerText = '< Prev ';
 
   const currentPageLabel = document.createElement('span');
   currentPageLabel.id = 'current-page';
   currentPageLabel.innerText = usersStore.getCurrentPage();
 
-  element.append(PrevButton, currentPageLabel, nextButton);
+  element.append(prevButton, currentPageLabel, nextButton);
 
   nextButton.addEventListener('click', async () => {
     await usersStore.loadNextPage();
@@ -25,7 +25,7 @@ export const renderButtons = (element) => {
     renderTable(element);
   });
 
-  PrevButton.addEventListener('click', async () => {
+  prevButton.addEventListener('click', async () => {
     await usersStore.loadPreviousPage();
     currentPageLabel.innerText = usersStore.getCurrentPage();
     renderTable(element);
