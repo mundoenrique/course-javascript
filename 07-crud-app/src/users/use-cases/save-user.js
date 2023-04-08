@@ -1,6 +1,6 @@
 import { localhostUserToModel } from '../mappers/localhost-user.mapper';
 import { userModelToLocalhost } from '../mappers/user-to-localhost.mapper';
-import { User } from '../models/users';
+import { User } from '../models/user';
 
 /**
  *

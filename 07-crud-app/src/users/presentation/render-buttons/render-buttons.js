@@ -1,6 +1,6 @@
 import usersStore from '../../store/users-store';
 import { renderTable } from '../render-table/render-table';
-import './render-butons.css';
+import './render-buttons.css';
 
 /**
  *

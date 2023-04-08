@@ -1,6 +1,6 @@
 import modalHtml from './render-modal.html?raw';
 import './render-modal.css';
-import { User } from '../../models/users';
+import { User } from '../../models/user';
 import { getUserById } from '../../use-cases/get-user-by-id';
 
 let modal, form;
