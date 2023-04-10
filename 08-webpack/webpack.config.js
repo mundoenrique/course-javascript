@@ -33,7 +33,7 @@ module.exports = {
       template: './src/index.html',
     }),
     new MiniCssExtract({
-      filename: '[name].[fullhash].css',
+      filename: '[name].css',
       ignoreOrder: false,
     }),
   ],
