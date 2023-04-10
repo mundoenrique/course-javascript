@@ -1,3 +1,18 @@
+// https://webpack.js.org/
+// https://webpack.js.org/guides/getting-started/
+// https://webpack.js.org/configuration/
+// https://webpack.js.org/loaders/html-loader/
+// https://webpack.js.org/plugins/html-webpack-plugin/
+// https://webpack.js.org/configuration/dev-server/
+// https://webpack.js.org/loaders/style-loader/
+// https://webpack.js.org/loaders/css-loader/
+// https://webpack.js.org/plugins/mini-css-extract-plugin/
+// https://v4.webpack.js.org/loaders/file-loader/
+// https://webpack.js.org/plugins/copy-webpack-plugin/
+// https://babeljs.io/
+// https://babeljs.io/setup
+// https://babeljs.io/setup#installation
+
 const HtmlWebpack = require('html-webpack-plugin');
 const MiniCssExtract = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
