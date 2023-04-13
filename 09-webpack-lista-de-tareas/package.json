@@ -1,5 +1,5 @@
 {
-  "name": "08-webpack",
+  "name": "09-webpack-todo-list",
   "version": "1.0.0",
   "description": "Mi primera aplicación",
   "main": "index.js",
