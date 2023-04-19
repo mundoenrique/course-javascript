@@ -22,6 +22,20 @@ export const buscarHeroeAsync = async (id) => {
   }
 };
 
+export const buscarHeroeAsyncSlow = async (id) => {
+  const heroe = heroes[id];
+
+  return new Promise((resolve, reject) => {
+    if (heroe) {
+      setTimeout(() => {
+        resolve(heroe);
+      }, 1000);
+    } else {
+      reject(`No existe un heroe con el id ${id}`);
+    }
+  });
+};
+
 const promesaLenta = new Promise((resolve) => {
   const timeResp = 2000;
   setTimeout(() => resolve(`Respondí en ${timeResp} sec`), timeResp);
