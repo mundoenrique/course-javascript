@@ -1,17 +1,22 @@
-import '../css/componentes.css';
-import webpacklogo from '../assets/img/webpack-logo.png';
+// Referencias en el HTML
+const divTodoList = document.querySelector('.todo-list');
 
-export const saludar = (nombre = 'sin nombre') => {
-  console.log('Creando etiqueta h1');
+export const crearTodoHtml = (todo) => {
+  const { tarea, id, completado } = todo;
+  const htmlTodo = `
+  <li class="${completado ? 'completed' : ''}" data-id="${id}">
+    <div class="view">
+      <input class="toggle" type="checkbox" ${completado ? 'checked' : ''} />
+      <label>${tarea}</label>
+      <button class="destroy"></button>
+    </div>
+    <input class="edit" value="Create a TodoMVC template" />
+  </li>
+  `;
+  const div = document.createElement('div');
 
-  const h1 = document.createElement('h1');
-  h1.innerText = `Hola ${nombre}`;
+  div.innerHTML = htmlTodo;
+  divTodoList.append(div.firstElementChild);
 
-  document.body.append(h1);
-
-  // Img;
-  const img = document.createElement('img');
-  img.src = webpacklogo;
-  img.alt = 'Webpack logo';
-  document.body.append(img);
+  return div.firstElementChild;
 };
