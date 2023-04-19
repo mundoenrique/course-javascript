@@ -8,7 +8,11 @@ export const heroes = {
     poder: 'Absurda cantidad de dinero',
   },
   spider: {
-    nombre: 'Spider',
+    nombre: 'Spiderman',
     poder: 'La mejor reacción alergica a las picaduras de arañas',
+  },
+  ant: {
+    nombre: 'Antman',
+    poder: 'hacerse muy pequeño',
   },
 };

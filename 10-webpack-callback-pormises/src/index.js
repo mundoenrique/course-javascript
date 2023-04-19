@@ -1,8 +1,16 @@
 import { buscarHeroe as buscarHeroeCallback } from './js/callbacks';
-import { buscarHeroe as buscarHeroePromesa, promesaLenta, promesaMedia, promesaRapida } from './js/promesas';
+import {
+  buscarHeroe as buscarHeroePromesa,
+  promesaLenta,
+  promesaMedia,
+  promesaRapida,
+  buscarHeroeAsync,
+} from './js/promesas';
 import './styles.css';
 const heroeId1 = 'capi';
 const heroeId2 = 'iron';
+const heroeId3 = 'spider';
+const heroeId4 = 'ant';
 let heroInfo1, heroInfo2;
 
 console.warn('callback');
@@ -71,4 +79,7 @@ promesaMedia.then(console.log).catch(console.error);
 promesaRapida.then(console.log).catch(console.error);
 
 Promise.race([promesaLenta, promesaMedia, promesaRapida]).then(console.log).catch(console.error);
+
+buscarHeroePromesa(heroeId3).then(console.log).catch(console.error);
+buscarHeroeAsync(heroeId4).then(console.log).catch(console.error);
 console.log('Última línea del index.js');
