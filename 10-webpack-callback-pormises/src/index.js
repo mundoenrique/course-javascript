@@ -1,5 +1,5 @@
 import { buscarHeroe as buscarHeroeCallback } from './js/callbacks';
-import { buscarHeroe as buscarHeroePromesa } from './js/promesas';
+import { buscarHeroe as buscarHeroePromesa, promesaLenta, promesaMedia, promesaRapida } from './js/promesas';
 import './styles.css';
 const heroeId1 = 'capi';
 const heroeId2 = 'iron';
@@ -66,4 +66,9 @@ Promise.all([buscarHeroePromesa(heroeId1), buscarHeroePromesa(heroeId2)])
   })
   .catch(console.error);
 
+promesaLenta.then(console.log).catch(console.error);
+promesaMedia.then(console.log).catch(console.error);
+promesaRapida.then(console.log).catch(console.error);
+
+Promise.race([promesaLenta, promesaMedia, promesaRapida]).then(console.log).catch(console.error);
 console.log('Última línea del index.js');

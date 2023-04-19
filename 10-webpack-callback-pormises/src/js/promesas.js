@@ -11,3 +11,20 @@ export const buscarHeroe = (id) => {
     }
   });
 };
+
+const promesaLenta = new Promise((resolve) => {
+  const timeResp = 2000;
+  setTimeout(() => resolve(`Respondí en ${timeResp} sec`), timeResp);
+});
+
+const promesaMedia = new Promise((resolve) => {
+  const timeResp = 1500;
+  setTimeout(() => resolve(`Respondí en ${timeResp} sec`), timeResp);
+});
+
+const promesaRapida = new Promise((resolve) => {
+  const timeResp = 1000;
+  setTimeout(() => resolve(`Respondí en ${timeResp} sec`), timeResp);
+});
+
+export { promesaLenta, promesaMedia, promesaRapida };
