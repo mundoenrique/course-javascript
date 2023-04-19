@@ -24,3 +24,13 @@ export const obtenerHeroesArr2 = async () => {
 
   return await Promise.all(heroresIds.map(buscarHeroeAsyncSlow));
 };
+
+export const obtenerHeroeAwait = async (id) => {
+  try {
+    const heroe = await buscarHeroeAsync(id);
+
+    return heroe;
+  } catch (error) {
+    throw error;
+  }
+};

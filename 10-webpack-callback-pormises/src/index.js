@@ -1,4 +1,4 @@
-import { obtenerHeroesArr, obtenerHeroesArr2 } from './js/await';
+import { obtenerHeroesArr, obtenerHeroesArr2, obtenerHeroeAwait } from './js/await';
 import { buscarHeroe as buscarHeroeCallback } from './js/callbacks';
 import {
   buscarHeroe as buscarHeroePromesa,
@@ -86,3 +86,4 @@ buscarHeroeAsync(heroeId4).then(console.log).catch(console.error);
 
 obtenerHeroesArr().then(console.table);
 obtenerHeroesArr2().then(console.table);
+obtenerHeroeAwait(heroeId2).then(console.log).catch(console.error);
