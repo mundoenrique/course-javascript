@@ -1,3 +1,4 @@
+import { obtenerHeroesArr } from './js/await';
 import { buscarHeroe as buscarHeroeCallback } from './js/callbacks';
 import {
   buscarHeroe as buscarHeroePromesa,
@@ -82,4 +83,5 @@ Promise.race([promesaLenta, promesaMedia, promesaRapida]).then(console.log).catc
 
 buscarHeroePromesa(heroeId3).then(console.log).catch(console.error);
 buscarHeroeAsync(heroeId4).then(console.log).catch(console.error);
-console.log('Última línea del index.js');
+
+obtenerHeroesArr().then(console.table);
