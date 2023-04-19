@@ -1,14 +1,17 @@
-import { buscarHeroe } from './js/callbacks';
+import { buscarHeroe as buscarHeroeCallback } from './js/callbacks';
+import { heroes } from './js/data/heroes';
+import { buscarHeroe as buscarHeroePromesa } from './js/promesas';
 import './styles.css';
 const heroeId1 = 'capi';
 const heroeId2 = 'iron';
 
-buscarHeroe(heroeId1, (err, heroe1) => {
+console.log('callback');
+buscarHeroeCallback(heroeId1, (err, heroe1) => {
   if (err) {
     return console.error(err);
   }
 
-  buscarHeroe(heroeId2, (err, heroe2) => {
+  buscarHeroeCallback(heroeId2, (err, heroe2) => {
     if (err) {
       return console.error(err);
     }
@@ -16,3 +19,12 @@ buscarHeroe(heroeId1, (err, heroe1) => {
     console.log(`Enviando a ${heroe1.nombre} y a ${heroe2.nombre} a la misión`);
   });
 });
+
+console.log('callback');
+buscarHeroePromesa(heroeId1)
+  .then((heroe1) => {
+    console.log(`Enviando a ${heroe1.nombre} a la misión`);
+  })
+  .catch(console.error);
+
+console.log('fin del programa');
