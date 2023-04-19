@@ -45,3 +45,11 @@ export const heroesCiclo = async () => {
   }
   console.timeEnd('heroesCiclo');
 };
+
+export const heroesIfawait = async (id) => {
+  if ((await buscarHeroeAsync(id)).nombre === 'Ironman') {
+    console.log('Es el emjor de todos');
+  } else {
+    console.log('Naaaaaa');
+  }
+};
